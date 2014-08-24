@@ -30,7 +30,7 @@ module Artificer
     def load_blueprint(name)
       path = blueprint_path(name)
       load path
-    rescue LoadError => e
+    rescue LoadError
       raise ConfigurationError.new("Cannot load blueprint file for #{name}: #{path}")
     end
 
