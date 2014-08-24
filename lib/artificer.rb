@@ -22,6 +22,12 @@ module Artificer
   def self.define_blueprint(name, block)
     registry.define(name, block)
   end
+
+  def self.reload!
+    blueprint_dir = registry.blueprint_dir
+    self.registry = Registry.new
+    self.registry.blueprint_dir = blueprint_dir
+  end
 end
 
 ActiveSupport.on_load(:active_record) do
