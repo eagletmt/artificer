@@ -2,8 +2,11 @@ require 'artificer/blueprint'
 
 module Artificer
   class Registry
+    attr_accessor :blueprint_dir
+
     def initialize
       @blueprints = {}
+      @blueprint_dir = nil
     end
 
     def fetch(name)
@@ -32,7 +35,7 @@ module Artificer
     end
 
     def blueprint_path(name)
-      "#{File.join(Artificer.blueprint_dir, name.underscore)}.rb"
+      "#{File.join(blueprint_dir, name.underscore)}.rb"
     end
 
     class Recorder

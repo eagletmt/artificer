@@ -4,8 +4,16 @@ require 'artificer/registry'
 require 'artificer/version'
 
 module Artificer
-  cattr_accessor :blueprint_dir, :registry
+  cattr_accessor :registry
   self.registry = Registry.new
+
+  def self.blueprint_dir
+    registry.blueprint_dir
+  end
+
+  def self.blueprint_dir=(path)
+    registry.blueprint_dir = path
+  end
 
   def self.fetch_blueprint(name)
     registry.fetch(name)
